@@ -6,7 +6,7 @@ COPY ["Pipfile","Pipfile.lock","./"]
 
 RUN pipenv install --system --deploy
 
-COPY ["dv.bin","model1.bin","q4.py","./"]
+COPY ["dv.bin","q4.py","./"]
 
 EXPOSE 8080
 

@@ -5,7 +5,7 @@ from flask import request
 from flask import jsonify
 
 
-model_file = 'model1.bin'
+model_file = 'model2.bin'
 dv_file = 'dv.bin'
 
 def load(filename: str):
@@ -32,6 +32,9 @@ def predict():
 
     return jsonify(result)
 
+@app.route('/', methods=['GET'])
+def helloworld():
+    return("HelloWorld!")
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=9696)
+    app.run(debug=True, host='0.0.0.0', port=8080)
