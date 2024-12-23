@@ -8,6 +8,8 @@ from urllib import request
 from PIL import Image
 from keras.applications.xception import preprocess_input
 
+print(np.__version__)
+
 interpreter = tflite.Interpreter(model_path = "./model_2024_hairstyle.tflite")
 interpreter.allocate_tensors()
 
@@ -42,8 +44,9 @@ def predict(url):
     interpreter.invoke()
 
     preds = interpreter.get_tensor(output_index)
-
-    return float(preds[0, 0])
+    print(preds)
+    float_predictions = preds[0].tolist()
+    return float_predictions
 
 def lambda_handler(event, context):
     url = event['url']
